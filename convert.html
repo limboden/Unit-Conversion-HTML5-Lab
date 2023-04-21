@@ -4,6 +4,38 @@
 <head>
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
+  <script type="application/javascript">
+    function temperature() {
+      var c = document.getElementById("c")
+      if (c.value == "") {
+        alert("Please input a temperature in C to convert it into F")
+        c.focus()
+        return false;
+      }
+      var f = c.value * (9 / 5) + 32
+      document.getElementById("f").value = f
+    }
+    function weight() {
+      var kg = document.getElementById("kg")
+      if (kg.value == "") {
+        alert("Please input a weight in KG to convert it into LBS")
+        kg.focus()
+        return false;
+      }
+      var lbs = kg.value * 2.2
+      document.getElementById("lbs").value = lbs
+    }
+    function distance() {
+      var km = document.getElementById("km")
+      if (km.value == "") {
+        alert("Please input a distance in KM to convert it into MI")
+        km.focus()
+        return false;
+      }
+      var mi = km.value * 0.62137
+      document.getElementById("mi").value = mi
+    }
+  </script>
 </head>
 
 <body>
@@ -28,17 +60,19 @@
           <img
             src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-CD0101EN-SkillsNetwork/labs/Theia%20Labs/02%20-%20HTML5%20Elements/images/thermo.png"
             width="150px" />
-          <figcaption>Celcius to Farenheit Conversion</figcaption>
+          <figcaption>Celsius to Farenheit Conversion</figcaption>
         </figure>
         <article>
-          <fieldset>
-            <legend>Temperature</legend>
-            <label for="Temperature">Celsius</label> <br />
-            <input type="number" id="c"> <br />
-            <button id="temperature"> Convert </button> <br />
-            <input type="number" id="f"> <br />
-            <label for="Temperature">Fahrenheit</label>
-          </fieldset>
+          <form id="temperature_form" onsubmit="return temperature()">
+            <fieldset>
+              <legend>Temperature</legend>
+              <label for="Temperature">Celsius</label> <br />
+              <input type="number" id="c"> <br />
+              <button type="submit"> Convert </button> <br />
+              <input type="float" id="f"> <br />
+              <label for="Temperature">Fahrenheit</label>
+            </fieldset>
+          </form>
           <aside>
             To convert celsuis to fahrenheit yourself, use this formula replacing the `C` with your temperature in
             celsuis: (C × 9/5) + 32
@@ -57,15 +91,17 @@
           <figcaption>Kilograms to Pound Conversion</figcaption>
         </figure>
         <article>
-          <fieldset>
-            <legend>Weight</legend>
-            <label for="Weight">KG</label> <br />
-            <input type="number"> <br />
-            <button id="weight"> Convert </button> <br />
+          <form id="weight_form" onsubmit="return weight()">
+            <fieldset>
+              <legend>Weight</legend>
+              <label for="Weight">KG</label> <br />
+              <input type="number" id="kg"> <br />
+              <button type="submit"> Convert </button> <br />
+              <input type="float" id="lbs"> <br />
+              <label for="lbs">Pounds</label>
+            </fieldset>
+          </form>
 
-            <input type="number"> <br />
-            <label for="Weight">Pounds</label>
-          </fieldset>
           <aside>
             To convert kilograms to pounds yourself, use this formula replacing the `kg` with your weight in kilograms:
             kg x 2.205
@@ -83,14 +119,17 @@
           <figcaption>Kilometers to Miles Conversion</figcaption>
         </figure>
         <article>
-          <fieldset>
-            <legend>Distance</legend>
-            <label for="Distance">KM</label> <br />
-            <input type="number"> <br />
-            <button id="distance"> Convert </button> <br />
-            <input type="number"> <br />
-            <label for="Distance">Miles</label>
-          </fieldset>
+          <form id="distance_form" onsubmit="return distance()">
+            <fieldset>
+              <legend>Distance</legend>
+              <label for="Distance">KM</label> <br />
+              <input type="number" id="km"> <br />
+              <button type="submit"> Convert </button> <br />
+              <input type="float" id="mi"> <br />
+              <label for="mi">Miles</label>
+            </fieldset>
+          </form>
+
           <aside>
             To convert kilometers to miles yourself, use this formula replacing the `km` with your distance in
             kilmeters: km &divide; 1.609
